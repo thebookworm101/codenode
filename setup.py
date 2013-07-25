@@ -64,7 +64,7 @@ setup(
     download_url='http://pypi.python.org/pypi/codenode',
     install_requires=[
         'Twisted>=9.0.0', 
-        'Django>=1.2.1', 
+        'Django>=1.5.1', 
         'Whoosh>=0.3.9', 
         'simplejson', 
         'django-compress'
