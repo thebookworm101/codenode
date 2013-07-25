@@ -38,8 +38,14 @@ To use maplotlib, install matplotlib and numpy:
 ::
 
   $ pip install numpy
-  $ pip install http://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.0/matplotlib-1.0.0.tar.gz?use_mirror=switch
+  $ pip install matplotlib
 
+or if there are missing dependency issues, get the development libraries through the normal 
+channels on your OS. For Ubuntu:
+
+::
+  $ sudo apt-get install  libfreetype6-dev   libpng-dev
+  $ sudo apt-get install  python-numpy-dev
 Now use pylab commands in a notebook, and call `show()` to render the plot.
   
 
