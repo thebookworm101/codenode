@@ -15,9 +15,9 @@
       <ul>
         <li id='user'>{{ user }}</li>
         {% ifnotequal path  '/bookshelf/' %}
-          <li><a id='bookshelfhome' href='{% url bookshelf %}'>Home</a></li>
+          <li><a id='bookshelfhome' href='{% url "bookshelf" %}'>Home</a></li>
         {% endifnotequal %}
-        <li><a id='settings' href='{% url usersettings %}'>Settings</a></li>
+        <li><a id='settings' href='{% url "usersettings" %}'>Settings</a></li>
         <!--<li><a id='help' target='_blank' href='/help'>Help</a></li>-->
         <li id='logout' style='border:none'><a href="/accounts/logout/?next=/">Logout</a></li>
       </ul>

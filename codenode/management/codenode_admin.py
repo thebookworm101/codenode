@@ -120,7 +120,7 @@ def check_home_dir():
         if not os.path.exists(required_directory):
             os.mkdir(required_directory)
         
-    if not os.path.exists(settings.DATABASE_NAME):
+    if not os.path.exists(settings.DATABASES['default']['NAME']):
         call_command('syncdb', interactive=False)
         bootstrap_database()
         

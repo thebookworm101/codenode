@@ -9,12 +9,13 @@
 import os
 from django.conf.urls.defaults import *
 from django.conf import settings
-
+from django.views.generic import TemplateView
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns("",
-    (r'^$', 'django.views.generic.simple.redirect_to', {'url':'bookshelf'}), #uses template/homepage.html 
+#    (r'^$', 'django.views.generic.simple.redirect_to', {'url':'bookshelf'}), #uses template/homepage.html 
+    (r'^$', TemplateView.as_view(template_name="template/homepage.html")), #uses template/homepage.html 
     (r'^bookshelf/', include('codenode.frontend.bookshelf.urls')),
     (r'^notebook/', include('codenode.frontend.notebook.urls')),
     (r'^backend/', include('codenode.frontend.backend.urls')),
@@ -23,7 +24,7 @@ urlpatterns = patterns("",
     (r'^util/', include('codenode.frontend.util.urls')),
     (r'^search$', include('codenode.frontend.search.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    (r'^admin/(.*)', admin.site.root),
+    (r'^admin/', include(admin.site.urls)),
 )
 
 if settings.DEBUG:
