@@ -44,8 +44,10 @@ or if there are missing dependency issues, get the development libraries through
 channels on your OS. For Ubuntu:
 
 ::
+
   $ sudo apt-get install  libfreetype6-dev   libpng-dev
   $ sudo apt-get install  python-numpy-dev
+
 Now use pylab commands in a notebook, and call `show()` to render the plot.
   
 
