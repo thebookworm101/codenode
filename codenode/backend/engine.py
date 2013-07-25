@@ -122,14 +122,13 @@ class EngineInstanceClient(object):
         except KeyError:
             log.err("Engine client has no method '%s'!" % (engine_method,))
             defer.returnValue({'result':'err'})
-        result = yield meth(engine_arg, cellid)
+        result = yield defer.maybeDeferred(meth,engine_arg, cellid)
         defer.returnValue(result)
 
-    @defer.inlineCallbacks
     def engine_start(self, args, arg):
         """dummy
         """
-        defer.returnValue({'result':'started'})
+        return {'result':'started'}
 
 
     @defer.inlineCallbacks

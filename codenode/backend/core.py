@@ -86,7 +86,7 @@ class EngineProcessManager(procmon.ProcessMonitor):
         p.name = name
         proc_config.processProtocol = p
         self.processes[name] = proc_config
-        if self.active:
+        if self.running:
             self.startProcess(name)
         return p.deferred
 
@@ -102,7 +102,6 @@ class EngineProcessManager(procmon.ProcessMonitor):
         env = p_conf.env
         path = p_conf.path
         self.timeStarted[name] = time.time()
-        p.deferred.setTimeout(self.START_TIMEOUT)
         reactor.spawnProcess(p, bin, args=args, env=env, path=path)
 
     def interruptProcess(self, name):
@@ -280,13 +279,13 @@ class EngineBus(object):
         log.msg('handling engine request for %s' % access_id)
         try:
             engine_client = yield self.backend.getEngine(access_id)
-            log.msg('got engine Client %s' % str(engine_client))
+            log.msg('got engine Client %s of type %s' % (str(engine_client), type(engine_client)))
         except InvalidAccessId:
             err = {'status':'ERR', 'response':'InvalidAccessId'}
             log.err('InvalidAccessId %s' % access_id)
             defer.returnValue(err)
 
-        result = yield engine_client.send(msg)
+        result = yield engine_client.send(msg) 
         sucs = {'status':'OK', 'response':result}
         defer.returnValue(sucs)
 

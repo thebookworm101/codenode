@@ -214,7 +214,8 @@ class EngineSessionAdapter(resource.Resource):
     def _success(self, data, request, cellid):
         """
         horrible. not always eval...
-        """        
+        """       
+        print "\n\n\n",repr(data) , "\n\n\n\n" 
         log.msg('handling data: %s' % str(data))
         data['cellid'] = cellid
         jsobj = json.dumps(data)
